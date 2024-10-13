@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const HomePage = () =>{
 
     const theme = useTheme();
-    const bg = theme.palette.primary.main;
+    const bg = theme.palette.background.main;
 
     return (
 <div style={{backgroundColor:bg}}>

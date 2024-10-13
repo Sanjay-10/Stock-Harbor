@@ -1,28 +1,21 @@
-
+import Navbar from "./components/navbar/index"
 import Trader from './components/trading/index';
 import Homepage from './components/homepage/index';
 import Investor from './components/investing/';
 import { BrowserRouter, Routes, Route  } from  "react-router-dom";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { themeSettings } from "./theme";
-import {createTheme} from '@mui/material/styles';
-import {useSelector} from "react-redux";
-import { useMemo } from 'react';
-
+import { theme } from "./theme";
+import { ThemeProvider } from "@mui/material";
 
 function App() {
-  const mode = useSelector((state) => state.mode);
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   return (
     <>
     <BrowserRouter>
      <ThemeProvider theme = { theme }>
-     <CssBaseline/>
 
       <Routes>
         <Route path="/"
-        element={ <Homepage/>} />
+        element={ <><Navbar/> <Homepage/></>} />
 
         <Route path="/investor"
         element= {<Investor/>} /> 
