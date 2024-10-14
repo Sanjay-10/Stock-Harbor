@@ -1,11 +1,15 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function optionChain() {
+function OptionChain() {
   return (
-    <div>
+<>
+    <Navbar/>
+    <h1>
       optionChain
-    </div>
+    </h1>
+</>
   )
 }
 
-export default optionChain
+export default OptionChain

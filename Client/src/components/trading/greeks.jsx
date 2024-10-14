@@ -1,9 +1,14 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function greeks() {
+function Greeks() {
   return (
-    <div>greeks</div>
+
+    <>
+    <Navbar/>
+    <h1>greeks</h1>
+    </>
   )
 }
 
-export default greeks
+export default Greeks

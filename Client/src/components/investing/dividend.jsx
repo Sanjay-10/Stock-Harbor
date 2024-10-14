@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function dividend() {
+function Dividend() {
   return (
-    <div>dividend</div>
+    <>
+    <Navbar/>
+    <h1>dividend</h1>
+    </>
   )
 }
 
-export default dividend
+export default Dividend

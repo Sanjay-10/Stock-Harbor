@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function heatmaps() {
+function Heatmaps() {
   return (
-    <div>heatmaps</div>
+    <>
+    <Navbar/>  
+    <h1>heatmaps</h1>
+    </>
   )
 }
 
-export default heatmaps
+export default Heatmaps

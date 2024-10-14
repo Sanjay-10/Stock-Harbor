@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function long-termPerf() {
+function LongTermPerformance() {
   return (
-    <div>long-termPerf</div>
+    <>
+    <Navbar />
+    <h1>long-termPerf</h1>
+    </>
   )
 }
 
-export default long-termPerf
+export default LongTermPerformance

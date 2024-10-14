@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function tick() {
+function Tick() {
   return (
-    <div>tick</div>
+    <>
+    <Navbar/>
+    <h1>tick</h1>
+    </>
   )
 }
 
-export default tick
+export default Tick

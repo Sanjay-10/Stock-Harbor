@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function orderBook() {
+function OrderBook() {
   return (
-    <div>orderBook</div>
+    <>
+    <Navbar/>
+    <h1>orderBook</h1>
+    </>
   )
 }
 
-export default orderBook
+export default OrderBook

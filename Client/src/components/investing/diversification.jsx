@@ -1,9 +1,12 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function diversification() {
-  return (
-    <div>diversification</div>
-  )
+function Diversification() {
+  return <>
+    <Navbar />
+    <h1>diversification</h1>
+  </>
+  
 }
 
-export default diversification
+export default Diversification

@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function vwap() {
+function Vwap() {
   return (
-    <div>vwap</div>
+    <>
+    <Navbar/>
+    <h1>vwap</h1>
+    </>
   )
 }
 
-export default vwap
+export default Vwap

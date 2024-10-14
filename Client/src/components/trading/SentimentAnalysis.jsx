@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../navbar'
 
-function News() {
+function SentimentAnalysis() {
   return (
     <>
     <Navbar/>
-    <h1>news</h1>
+    <h1>sentiment</h1>
     </>
   )
 }
 
-export default News
+export default SentimentAnalysis

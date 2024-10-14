@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function stockScreener() {
+function StockScreener() {
   return (
-    <div>stockScreener</div>
+    <>
+    <Navbar/>
+    <h1>stockScreener</h1>
+    </>
   )
 }
 
-export default stockScreener
+export default StockScreener

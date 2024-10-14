@@ -3,11 +3,13 @@ import { AppBar, Toolbar, Typography, Box, Menu, MenuItem, Button, Divider } fro
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const { palette } = useTheme();
+  const navigate = useNavigate();
   const main = palette.primary.main;
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
@@ -21,32 +23,38 @@ function Navbar() {
   };
 
   const Investor = [
-    "Portfolio Diversification Analysis",
-    "Dividend Tracking",
-    "Value Investing Metrics",
-    "Stock Screener",
-    "Long-Term Performance Charts",
-    // "Income vs. Growth Stock Segmentation",
-    // "Investment Horizon Calculator",
-    // "ETF Analyzer",
-    "Sector Rotation Analysis",
-    // "Tax Optimization"
-    "Stock News"
+    { name: "Portfolio Diversification Analysis", path: "/portfolio-diversification-analysis" },
+    { name: "Dividend Tracking", path: "/dividend-tracking" },
+    { name: "Value Investing Metrics", path: "/value-investing-metrics" },
+    { name: "Stock Screener", path: "/stock-screener" },
+    { name: "Long-Term Performance Charts", path: "/long-term-performance-charts" },
+    // { name: "Income vs. Growth Stock Segmentation", path: "/income-vs-growth-stock-segmentation" },
+    // { name: "Investment Horizon Calculator", path: "/investment-horizon-calculator" },
+    // { name: "ETF Analyzer", path: "/etf-analyzer" },
+    { name: "Sector Rotation Analysis", path: "/sector-rotation-analysis" },
+    // { name: "Tax Optimization", path: "/tax-optimization" },
+    { name: "Stock News", path: "/stock-news" }
   ];
 
   const Trader = [
-    "Open Interest (OI) Data",
-    "VWAP Chart",
-    "Order Book Analysis",
-    "Tick-by-Tick Data",
-    "Options Chain with Greeks",
-    "Technical Indicator Library",
-    // "Price Action Alerts",
-    "Heatmaps",
-    "Multi-Timeframe Analysis",
-    "Sentiment Analysis",
-    "Stock News"
+    { name: "Open Chain", path: "/option-chain" },
+    { name: "Open Interest (OI) Data", path: "/open-interest-data" },
+    { name: "VWAP Chart", path: "/vwap-chart" },
+    { name: "Order Book Analysis", path: "/order-book-analysis" },
+    { name: "Tick-by-Tick Data", path: "/tick-by-tick-data" },
+    { name: "Options Chain with Greeks", path: "/options-chain-with-greeks" },
+    // { name: "Technical Indicator Library", path: "/technical-indicator-library" },
+    // { name: "Price Action Alerts", path: "/price-action-alerts" },
+    { name: "Heatmaps", path: "/heatmaps" },
+    { name: "Multi-Timeframe Analysis", path: "/multi-timeframe-analysis" },
+    { name: "Sentiment Analysis", path: "/sentiment-analysis" },
+    { name: "Stock News", path: "/stock-news" }
   ];
+
+  const handleNavigation = (path) => {
+    console.log(path);
+    navigate(path);
+  };
 
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
@@ -96,11 +104,12 @@ function Navbar() {
                 {Investor.slice(0, Math.ceil(Investor.length / 2)).map((item, index) => (
                   <MenuItem
                   key={index}
+                  onClick={() => handleNavigation(item.path) }
                   sx={{ ":hover": { bgcolor: "black" , color:"white"}, fontSize:"1rem", fontWeight:"medium", display: 'flex', justifyContent: 'space-between' }}
                   onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                   onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
-                    {item } <ArrowRightIcon sx={{ visibility: 'hidden' }} />
+                    {item.name } <ArrowRightIcon sx={{ visibility: 'hidden' }} />
                   </MenuItem>
                 ))}
               </Box>
@@ -112,12 +121,13 @@ function Navbar() {
               <Box sx={{ flex: 1, paddingLeft: '1rem' }}>
                 {Investor.slice(Math.ceil(Investor.length / 2)).map((item, index) => (
                   <MenuItem
+                  onClick={() => handleNavigation(item.path) }
                     key={index}
                     sx={{ ":hover": { bgcolor: "black" , color:"white" }, fontSize:"1rem", fontWeight:"medium" ,display: 'flex', justifyContent: 'space-between' }}
                     onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                     onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
-                    {item} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
+                    {item.name} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
                   </MenuItem>
                 ))}
               </Box>
@@ -161,12 +171,13 @@ function Navbar() {
               <Box sx={{ flex: 1, paddingRight: '1rem', borderRight:"1px solid lightgrey" }}>
                 {Trader.slice(0, Math.ceil(Trader.length / 2)).map((item, index) => (
                   <MenuItem
+                  onClick={() => handleNavigation(item.path) }
                     key={index}
                     sx={{ ":hover": { bgcolor: "black" , color:"white" }, display: 'flex', fontSize:"1rem", fontWeight:"medium", justifyContent: 'space-between' }}
                     onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                     onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
-                    {item} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
+                    {item.name} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
                   </MenuItem>
                 ))}
               </Box>
@@ -175,12 +186,13 @@ function Navbar() {
               <Box sx={{ flex: 1, paddingLeft: '1rem' }}>
                 {Trader.slice(Math.ceil(Trader.length / 2)).map((item, index) => (
                   <MenuItem
+                  onClick={() => handleNavigation(item.path) }
                     key={index}
                     sx={{ ":hover": { bgcolor: "black" , color:"white" }, display: 'flex', fontSize:"1rem", fontWeight:"medium", justifyContent: 'space-between' }}
                     onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                     onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
-                    {item} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
+                    {item.name} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
                   </MenuItem>
                 ))}
               </Box>

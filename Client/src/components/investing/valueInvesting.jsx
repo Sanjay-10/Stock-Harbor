@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function valueInvesting() {
+function ValueInvesting() {
   return (
-    <div>valueInvesting</div>
+    <>
+    <Navbar/>
+    <h1>valueInvesting</h1>
+    </>
   )
 }
 
-export default valueInvesting
+export default ValueInvesting

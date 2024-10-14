@@ -1,9 +1,8 @@
-import Navbar from "../navbar";
 
 function InvestorDashboard() {
   return (
     <>
-    <Navbar/>
+
 
     <div className="investor-dashboard">
       <h2>Investor Dashboard</h2>

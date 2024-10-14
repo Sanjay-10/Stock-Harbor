@@ -1,11 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function openInterest() {
+function OpenInterest() {
   return (
-    <div>
-      openInterest
-    </div>
+    <>
+    <Navbar/>   
+     <h1>openInterest</h1> 
+    </>
   )
 }
 
-export default openInterest
+export default OpenInterest

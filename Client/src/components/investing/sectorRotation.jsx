@@ -1,9 +1,14 @@
 import React from 'react'
+import Navbar from '../navbar'
 
-function sectorRotation() {
+function SectorRotation() {
   return (
-    <div>sectorRotation</div>
+
+    <>
+    <Navbar/>
+    <h1>sectorRotation</h1>
+    </>
   )
 }
 
-export default sectorRotation
+export default SectorRotation
