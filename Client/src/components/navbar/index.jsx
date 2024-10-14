@@ -60,7 +60,7 @@ function Navbar() {
     <AppBar position="static" sx={{ bgcolor: "black" }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', padding: '0 3rem' }}>
         {/* Navbar start - Logo/Title */}
-        <Typography variant="h6" sx={{ color: "white" }}>
+        <Typography onClick={()=>(navigate("/"))} variant="h4"  sx={{ color: "white", fontWeight:"bold", cursor:"pointer"}}>
           Stock-Harbor
         </Typography>
 
@@ -105,7 +105,7 @@ function Navbar() {
                   <MenuItem
                   key={index}
                   onClick={() => handleNavigation(item.path) }
-                  sx={{ ":hover": { bgcolor: "black" , color:"white"}, fontSize:"1rem", fontWeight:"medium", display: 'flex', justifyContent: 'space-between' }}
+                  sx={{ ":hover": { bgcolor: "black", borderRadius:"5px" , color:"white"}, fontSize:"1rem", fontWeight:"medium", display: 'flex', justifyContent: 'space-between' }}
                   onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                   onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
@@ -123,7 +123,7 @@ function Navbar() {
                   <MenuItem
                   onClick={() => handleNavigation(item.path) }
                     key={index}
-                    sx={{ ":hover": { bgcolor: "black" , color:"white" }, fontSize:"1rem", fontWeight:"medium" ,display: 'flex', justifyContent: 'space-between' }}
+                    sx={{ ":hover": { bgcolor: "black", borderRadius:"5px" , color:"white" }, fontSize:"1rem", fontWeight:"medium" ,display: 'flex', justifyContent: 'space-between' }}
                     onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                     onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
@@ -173,7 +173,7 @@ function Navbar() {
                   <MenuItem
                   onClick={() => handleNavigation(item.path) }
                     key={index}
-                    sx={{ ":hover": { bgcolor: "black" , color:"white" }, display: 'flex', fontSize:"1rem", fontWeight:"medium", justifyContent: 'space-between' }}
+                    sx={{ ":hover": { bgcolor: "black", borderRadius:"5px" , color:"white" }, display: 'flex', fontSize:"1rem", fontWeight:"medium", justifyContent: 'space-between' }}
                     onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                     onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
@@ -188,7 +188,7 @@ function Navbar() {
                   <MenuItem
                   onClick={() => handleNavigation(item.path) }
                     key={index}
-                    sx={{ ":hover": { bgcolor: "black" , color:"white" }, display: 'flex', fontSize:"1rem", fontWeight:"medium", justifyContent: 'space-between' }}
+                    sx={{ ":hover": { bgcolor: "black", borderRadius:"5px" , color:"white" }, display: 'flex', fontSize:"1rem", fontWeight:"medium", justifyContent: 'space-between' }}
                     onMouseEnter={(e) => (e.target.querySelector('svg').style.visibility = 'visible')}
                     onMouseLeave={(e) => (e.target.querySelector('svg').style.visibility = 'hidden')}
                   >
