@@ -6,6 +6,10 @@ import cors from "cors"
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
+import { hello } from "./controllers/hello.js";
+import helloRoutes from "./routes/hello.js";
+import finnhub from 'finnhub';
+import axios from "axios";
 
 dotenv.config();
 
@@ -19,6 +23,17 @@ app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));
 app.use(cors());
 
 
+// FINNHUB API
+const news = process.env.NEWS_API_KEY;
+const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+api_key.apiKey = news;
+export const finnhubClient = new finnhub.DefaultApi()
+  
+// ALPHA VANTAGE API
+export const alpha = process.env.ALPHA_VANTAGE_API_KEY;
+
+
+app.use("/", helloRoutes);
 
 // Connect to MongoDB
 const PORT = process.env.PORT || 5001;
