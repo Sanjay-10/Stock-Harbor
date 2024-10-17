@@ -26,6 +26,13 @@ import MultiTF from "./components/trading/MultiTF";
 import SentimentAnalysis from "./components/trading/SentimentAnalysis";
 import Greeks from "./components/trading/greeks";
 
+import MarketNews from "./components/investing/MarketNews";
+import TopGL from "./components/investing/TopGL";
+import Dividends from "./components/investing/Dividends";
+import Earnings from "./components/investing/Earnings";
+import InsiderTransactions from "./components/trading/InsiderTransactions";
+import CompaniesOverview from "./components/trading/CompaniesOverview";
+
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -53,6 +60,12 @@ function App() {
             {/* <Route path="/tax-optimization" element={<> </>} /> */}
             <Route path="/stock-news" element={<News/>} />
 
+            {/* Currently Implemented */}
+            <Route path="/global-market-status" element={<MarketNews/>} />
+            <Route path="/top-gainers-losers" element={<TopGL/>} />
+            <Route path="/dividends" element={<Dividends/>} />
+            <Route path="/earnings" element={<Earnings/>} />
+
 {/* Trader */}
             <Route path="/option-chain" element={<OptionChain/>} />
             <Route path="/open-interest-data" element={<OpenInterest/>} />
@@ -65,6 +78,10 @@ function App() {
             <Route path="/heatmaps" element={<Heatmaps/>} />
             <Route path="/multi-timeframe-analysis" element={<MultiTF/>} />
             <Route path="/sentiment-analysis" element={<SentimentAnalysis/>} />
+
+            {/* Currently Implemented */}
+            <Route path="/insider-transactions" element={<InsiderTransactions/>} />
+            <Route path="/companies-overview" element={<CompaniesOverview/>} />
             
       </Routes>
       </ThemeProvider>

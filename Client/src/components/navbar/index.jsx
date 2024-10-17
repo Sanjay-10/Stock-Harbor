@@ -23,32 +23,42 @@ function Navbar() {
   };
 
   const Investor = [
-    { name: "Portfolio Diversification Analysis", path: "/portfolio-diversification-analysis" },
-    { name: "Dividend Tracking", path: "/dividend-tracking" },
-    { name: "Value Investing Metrics", path: "/value-investing-metrics" },
-    { name: "Stock Screener", path: "/stock-screener" },
-    { name: "Long-Term Performance Charts", path: "/long-term-performance-charts" },
-    // { name: "Income vs. Growth Stock Segmentation", path: "/income-vs-growth-stock-segmentation" },
-    // { name: "Investment Horizon Calculator", path: "/investment-horizon-calculator" },
-    // { name: "ETF Analyzer", path: "/etf-analyzer" },
-    { name: "Sector Rotation Analysis", path: "/sector-rotation-analysis" },
-    // { name: "Tax Optimization", path: "/tax-optimization" },
-    { name: "Stock News", path: "/stock-news" }
+    // { name: "Portfolio Diversification Analysis", path: "/portfolio-diversification-analysis" },
+    // { name: "Dividend Tracking", path: "/dividend-tracking" },
+    // { name: "Value Investing Metrics", path: "/value-investing-metrics" },
+    // { name: "Stock Screener", path: "/stock-screener" },
+    // { name: "Long-Term Performance Charts", path: "/long-term-performance-charts" },
+    // // { name: "Income vs. Growth Stock Segmentation", path: "/income-vs-growth-stock-segmentation" },
+    // // { name: "Investment Horizon Calculator", path: "/investment-horizon-calculator" },
+    // // { name: "ETF Analyzer", path: "/etf-analyzer" },
+    // { name: "Sector Rotation Analysis", path: "/sector-rotation-analysis" },
+    // // { name: "Tax Optimization", path: "/tax-optimization" },
+    // { name: "Stock News", path: "/stock-news" },
+
+    //CURRENTLY IMPLEMENTED
+    {name: "Global Market Staus", path: "/global-market-status"},
+    {name:"Top Gainers and Losers", path: "/top-gainers-losers"},
+    {name:"Dividends", path: "/dividends"},
+    {name:"Earnings", path: "/earnings"},
   ];
 
   const Trader = [
-    { name: "Open Chain", path: "/option-chain" },
-    { name: "Open Interest (OI) Data", path: "/open-interest-data" },
-    { name: "VWAP Chart", path: "/vwap-chart" },
-    { name: "Order Book Analysis", path: "/order-book-analysis" },
-    { name: "Tick-by-Tick Data", path: "/tick-by-tick-data" },
-    { name: "Options Chain with Greeks", path: "/options-chain-with-greeks" },
-    // { name: "Technical Indicator Library", path: "/technical-indicator-library" },
-    // { name: "Price Action Alerts", path: "/price-action-alerts" },
-    { name: "Heatmaps", path: "/heatmaps" },
-    { name: "Multi-Timeframe Analysis", path: "/multi-timeframe-analysis" },
-    { name: "Sentiment Analysis", path: "/sentiment-analysis" },
-    { name: "Stock News", path: "/stock-news" }
+    // { name: "Open Chain", path: "/option-chain" },
+    // { name: "Open Interest (OI) Data", path: "/open-interest-data" },
+    // { name: "VWAP Chart", path: "/vwap-chart" },
+    // { name: "Order Book Analysis", path: "/order-book-analysis" },
+    // { name: "Tick-by-Tick Data", path: "/tick-by-tick-data" },
+    // { name: "Options Chain with Greeks", path: "/options-chain-with-greeks" },
+    // // { name: "Technical Indicator Library", path: "/technical-indicator-library" },
+    // // { name: "Price Action Alerts", path: "/price-action-alerts" },
+    // { name: "Heatmaps", path: "/heatmaps" },
+    // { name: "Multi-Timeframe Analysis", path: "/multi-timeframe-analysis" },
+    // { name: "Sentiment Analysis", path: "/sentiment-analysis" },
+    // { name: "Stock News", path: "/stock-news" },
+
+    //CURRENTLY IMPLEMENTED
+    {name:"Insider Transactions", path: "/insider-transactions"},
+    {name:"Companies Overview", path: "/companies-overview"},
   ];
 
   const handleNavigation = (path) => {

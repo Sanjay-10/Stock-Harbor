@@ -1,6 +1,6 @@
-import e from 'express';
-import { alpha } from '../index';
-import {finnhubClient} from '../index';
+import { alpha } from '../index.js';
+import {finnhubClient} from '../index.js';
+import axios from 'axios';
 
 
 // SEARCH STOCK NAME SYMBOL

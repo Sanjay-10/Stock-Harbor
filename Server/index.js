@@ -6,10 +6,9 @@ import cors from "cors"
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
-import { hello } from "./controllers/hello.js";
-import helloRoutes from "./routes/hello.js";
 import finnhub from 'finnhub';
-import axios from "axios";
+import investorRoutes from "./routes/investor.js";
+import traderRoutes from "./routes/trader.js";
 
 dotenv.config();
 
@@ -32,8 +31,10 @@ export const finnhubClient = new finnhub.DefaultApi()
 // ALPHA VANTAGE API
 export const alpha = process.env.ALPHA_VANTAGE_API_KEY;
 
+// Routes
+app.use("/investing", investorRoutes);
+app.use("/trading", traderRoutes);
 
-app.use("/", helloRoutes);
 
 // Connect to MongoDB
 const PORT = process.env.PORT || 5001;

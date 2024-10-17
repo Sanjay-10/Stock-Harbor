@@ -8,3 +8,12 @@ body,
   width: 100%;
   font-family: "Poppins", sans-serif;
 }
+
+.color-transition {
+  height: 100%;
+  /* background: linear-gradient(#83a4d4, #b6fbff); */
+  /* background: linear-gradient(#8EC5FC, #E0C3FC); */
+  background: linear-gradient(90deg, #1a535c, #4ecdc4);
+
+}
+

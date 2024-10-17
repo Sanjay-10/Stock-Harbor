@@ -1,6 +1,8 @@
 import Navbar from "../navbar";
 import { useTheme } from "@mui/material";
 import { useSelector } from "react-redux";
+import "../../index.css";
+import Search from "../../scenes/Search";
 
 const HomePage = () =>{
 
@@ -8,10 +10,12 @@ const HomePage = () =>{
     const bg = theme.palette.background.main;
 
     return (
-<div style={{backgroundColor:bg}}>
+<div className="color-transition">
 
 <Navbar />
-    <h1 >HomePage</h1>
+    <h1 style={{color:"white", textAlign:"center", fontSize:"4rem"}}>HomePage</h1>
+
+    <Search placeholder="Search"/>
 </div>
     )
 }
