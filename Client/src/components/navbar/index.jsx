@@ -22,6 +22,16 @@ function Navbar() {
     }));
   };
 
+
+  const Tools = [
+    {name: "Global Market Staus", path: "/global-market-status"},
+    {name:"Top Gainers and Losers", path: "/top-gainers-losers"},
+    {name:"Dividends", path: "/dividends"},
+    {name:"Earnings", path: "/earnings"},
+    {name:"Insider Transactions", path: "/insider-transactions"},
+    {name:"Companies Overview", path: "/companies-overview"},
+  ];
+
   const Investor = [
     // { name: "Portfolio Diversification Analysis", path: "/portfolio-diversification-analysis" },
     // { name: "Dividend Tracking", path: "/dividend-tracking" },
@@ -35,11 +45,7 @@ function Navbar() {
     // // { name: "Tax Optimization", path: "/tax-optimization" },
     // { name: "Stock News", path: "/stock-news" },
 
-    //CURRENTLY IMPLEMENTED
-    {name: "Global Market Staus", path: "/global-market-status"},
-    {name:"Top Gainers and Losers", path: "/top-gainers-losers"},
-    {name:"Dividends", path: "/dividends"},
-    {name:"Earnings", path: "/earnings"},
+
   ];
 
   const Trader = [
@@ -56,9 +62,6 @@ function Navbar() {
     // { name: "Sentiment Analysis", path: "/sentiment-analysis" },
     // { name: "Stock News", path: "/stock-news" },
 
-    //CURRENTLY IMPLEMENTED
-    {name:"Insider Transactions", path: "/insider-transactions"},
-    {name:"Companies Overview", path: "/companies-overview"},
   ];
 
   const handleNavigation = (path) => {
@@ -76,13 +79,13 @@ function Navbar() {
 
         {/* Navbar center - Links for larger screens */}
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: '4rem', alignItems: 'center' }}>
-          {/* Investing Button */}
+          {/* Tools Button */}
           <Button
             onClick={() => handleMenuOpen('investor')}
-            sx={{ textDecoration: 'none', color: 'green', fontSize: '1rem', display: 'flex', alignItems: 'center' }}
+            sx={{ textDecoration: 'none', color: 'green', fontSize: '1.2rem', fontWeight:"bold", display: 'flex', alignItems: 'center' }}
             endIcon={openMenu.investor ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
           >
-            Investing
+            Tools
           </Button>
           <Menu
             sx={{ position: 'absolute', top: '3.5rem' }}
@@ -111,7 +114,7 @@ function Navbar() {
             <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '1rem' }}>
               {/* Left Column */}
               <Box sx={{ flex: 1, paddingRight: '1rem', borderRight:"1px solid lightgrey" ,  fontsize:"5rem"}}>
-                {Investor.slice(0, Math.ceil(Investor.length / 2)).map((item, index) => (
+                {Tools.slice(0, Math.ceil(Tools.length / 2)).map((item, index) => (
                   <MenuItem
                   key={index}
                   onClick={() => handleNavigation(item.path) }
@@ -129,7 +132,7 @@ function Navbar() {
 
               {/* Right Column */}
               <Box sx={{ flex: 1, paddingLeft: '1rem' }}>
-                {Investor.slice(Math.ceil(Investor.length / 2)).map((item, index) => (
+                {Tools.slice(Math.ceil(Tools.length / 2)).map((item, index) => (
                   <MenuItem
                   onClick={() => handleNavigation(item.path) }
                     key={index}
@@ -145,7 +148,7 @@ function Navbar() {
           </Menu>
 
           {/* Trading Button */}
-          <Button
+          {/* <Button
             onClick={() => handleMenuOpen('trader')}
             sx={{ textDecoration: 'none', color: 'green', fontSize: '1rem', display: 'flex', alignItems: 'center' }}
             endIcon={openMenu.trader ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
@@ -176,9 +179,9 @@ function Navbar() {
               },
             }}
           >
-            <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '1rem' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '1rem' }}> */}
               {/* Left Column */}
-              <Box sx={{ flex: 1, paddingRight: '1rem', borderRight:"1px solid lightgrey" }}>
+              {/* <Box sx={{ flex: 1, paddingRight: '1rem', borderRight:"1px solid lightgrey" }}>
                 {Trader.slice(0, Math.ceil(Trader.length / 2)).map((item, index) => (
                   <MenuItem
                   onClick={() => handleNavigation(item.path) }
@@ -190,10 +193,10 @@ function Navbar() {
                     {item.name} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
                   </MenuItem>
                 ))}
-              </Box>
+              </Box> */}
 
               {/* Right Column */}
-              <Box sx={{ flex: 1, paddingLeft: '1rem' }}>
+              {/* <Box sx={{ flex: 1, paddingLeft: '1rem' }}>
                 {Trader.slice(Math.ceil(Trader.length / 2)).map((item, index) => (
                   <MenuItem
                   onClick={() => handleNavigation(item.path) }
@@ -205,9 +208,9 @@ function Navbar() {
                     {item.name} <ArrowRightIcon sx={{ visibility: 'hidden' }} />
                   </MenuItem>
                 ))}
-              </Box>
-            </Box>
-          </Menu>
+              </Box> */}
+            {/* </Box>
+          </Menu> */}
         </Box>
 
         {/* Navbar end - Profile or button */}

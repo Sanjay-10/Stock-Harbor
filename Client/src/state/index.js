@@ -4,6 +4,8 @@ const initialState = {
     mode:"light",
     user:null,
     token:null,
+    symbol:null,
+
 };
 
 export const authSlice = createSlice({
@@ -13,9 +15,12 @@ export const authSlice = createSlice({
         setMode: (state) => {
             state.mode = state.mode === 'light' ? 'dark' : 'light';
         },
+        setSearchedWord: (state, action) => {
+            state.symbol = action.payload;
+        }
     }
 });
 
-export const { setMode } = authSlice.actions;
+export const { setMode, setSearchedWord } = authSlice.actions;
 
 export default authSlice.reducer;

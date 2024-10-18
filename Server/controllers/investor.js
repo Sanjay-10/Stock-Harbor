@@ -1,21 +1,39 @@
 import { alpha } from '../index.js';
 import {finnhubClient} from '../index.js';
 import axios from 'axios';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const stockDaraPath = path.join(__dirname, "../Data/stockSymbols.json");
+const stockData = JSON.parse(fs.readFileSync(stockDaraPath, 'utf-8'));
 
 // SEARCH STOCK NAME SYMBOL
 export const fetchSymbolData = async (req, res) => {
-    try{
-        const {searchingSymbol} = req.body;
-        const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchingSymbol}&apikey=${alpha}`;
-        const response = await axios.get(url, {
-            headers: { 'User-Agent': 'axios' }, 
-        });
-        res.status(200).json(response.data);
-    } catch (err){
-        res.status(404).json({message: err.message});   
-    } 
-}
+    try {
+        const searchingSymbol = req.query.searchingSymbol?.toLowerCase();
+
+        if (!searchingSymbol) {
+            return res.status(400).json({ message: "searchingSymbol is required." });
+        }
+
+        // Filter the stock data by Symbol or Security
+        const filteredStocks = stockData.filter(stock =>
+            stock.Symbol.toLowerCase().includes(searchingSymbol) ||
+            stock.Security.toLowerCase().includes(searchingSymbol)
+        );
+
+        const limitedResults = filteredStocks.slice(0,5);
+
+        res.status(200).json(limitedResults);
+        console.log(limitedResults);
+    } catch (err) {
+        res.status(404).json({ message: err.message });
+    }
+};
+
 
 // Market News and Sentiment - GENERAL 
 export const fetchMarketNews = async (req, res) => {

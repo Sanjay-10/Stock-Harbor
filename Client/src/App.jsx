@@ -32,6 +32,7 @@ import Dividends from "./components/investing/Dividends";
 import Earnings from "./components/investing/Earnings";
 import InsiderTransactions from "./components/trading/InsiderTransactions";
 import CompaniesOverview from "./components/trading/CompaniesOverview";
+import Company from './components/investing/Company';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
       <Route path="/" element={<><Homepage /></>} />
 
 {/* Investor */}
+            <Route path="/company" element={<Company />} />
             <Route path="/portfolio-diversification-analysis" element={<Diversification/>} />
             <Route path="/dividend-tracking" element={<Dividend/>} />
             <Route path="/value-investing-metrics" element={<ValueInvesting/>} />

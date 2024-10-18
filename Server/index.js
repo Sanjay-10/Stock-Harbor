@@ -32,8 +32,8 @@ export const finnhubClient = new finnhub.DefaultApi()
 export const alpha = process.env.ALPHA_VANTAGE_API_KEY;
 
 // Routes
-app.use("/investing", investorRoutes);
-app.use("/trading", traderRoutes);
+app.use("/", investorRoutes);
+app.use("/", traderRoutes);
 
 
 // Connect to MongoDB
