@@ -273,7 +273,7 @@ const StockCompanyPage = () => {
                             component="img"
                             height="140"
                             image={newsItem.banner_image}
-                            alt={newsItem.title}
+                            alt={newsItem.feed.title}
                           />
                           <CardContent>
                             <Typography
@@ -281,7 +281,7 @@ const StockCompanyPage = () => {
                               variant="h6"
                               component="div"
                             >
-                              {newsItem.title}
+                              {newsItem.feed.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                               {newsItem.summary}
@@ -293,7 +293,7 @@ const StockCompanyPage = () => {
                             >
                               Published:{" "}
                               {new Date(
-                                newsItem.time_published
+                                newsItem.feed.time_published
                               ).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "short",
@@ -302,7 +302,7 @@ const StockCompanyPage = () => {
                             </Typography>
                             <Button
                               size="small"
-                              href={newsItem.url}
+                              href={newsItem.feed.url}
                               target="_blank"
                               sx={{ mt: 1 }}
                             >
