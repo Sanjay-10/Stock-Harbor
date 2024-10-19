@@ -26,7 +26,7 @@ import MultiTF from "./components/trading/MultiTF";
 import SentimentAnalysis from "./components/trading/SentimentAnalysis";
 import Greeks from "./components/trading/greeks";
 
-import MarketNews from "./components/investing/MarketNews";
+import MarketStatus from "./components/investing/MarketStatus";
 import TopGL from "./components/investing/TopGL";
 import Dividends from "./components/investing/Dividends";
 import Earnings from "./components/investing/Earnings";
@@ -63,7 +63,7 @@ function App() {
             <Route path="/stock-news" element={<News/>} />
 
             {/* Currently Implemented */}
-            <Route path="/global-market-status" element={<MarketNews/>} />
+            <Route path="/global-market-status" element={<MarketStatus/>} />
             <Route path="/top-gainers-losers" element={<TopGL/>} />
             <Route path="/dividends" element={<Dividends/>} />
             <Route path="/earnings" element={<Earnings/>} />

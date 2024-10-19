@@ -24,7 +24,7 @@ function Navbar() {
 
 
   const Tools = [
-    {name: "Global Market Staus", path: "/global-market-status"},
+    {name: "Global Market Status", path: "/global-market-status"},
     {name:"Top Gainers and Losers", path: "/top-gainers-losers"},
     {name:"Dividends", path: "/dividends"},
     {name:"Earnings", path: "/earnings"},

@@ -1,0 +1,76 @@
+import React, { useState, useEffect } from 'react';
+import Navbar from '../navbar';
+import axios from 'axios';
+import { Container, Table, TableHead, TableBody, TableRow, TableCell, Chip } from '@mui/material';
+
+function MarketStatus() {
+  const [marketStatus, setMarketStatus] = useState([{"market_type": "Equity",
+    "region": "United States",
+    "primary_exchanges": "NASDAQ, NYSE, AMEX, BATS",
+    "local_open": "09:30",
+    "local_close": "16:15",
+    "current_status": "closed",}]);
+
+
+  const fetchMarketStatus = async () => {
+    try {
+      const response = await axios.get("http://localhost:5001/marketstatus");
+      // Assuming the response is valid and contains data in an array format
+      if (response.data) {
+        // setMarketStatus(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching market status:", error);
+      // setMarketStatus([]); 
+    }
+  }
+
+  useEffect(() => { fetchMarketStatus(); }, []);
+  
+
+  return (
+    <>
+      <Navbar />
+      <Container style={{ marginTop: '20px', width: '80%', maxWidth: '80%' }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell><strong>Market</strong></TableCell>
+              <TableCell><strong>Primary Exchanges</strong></TableCell>
+              <TableCell><strong>Hours</strong></TableCell>
+              <TableCell><strong>Status</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {marketStatus.length > 0 ? (
+              marketStatus.map((market, index) => (
+                <TableRow key={index}>
+                  <TableCell>
+                    <strong>{market.market_type}</strong> <br />
+                    {market.region}
+                  </TableCell>
+                  <TableCell>{market.primary_exchanges}</TableCell>
+                  <TableCell>{market.local_open} - {market.local_close}</TableCell>
+                  <TableCell>
+                    <Chip
+                      label={market.current_status === 'open' ? 'Open' : 'Closed'}
+                      color={market.current_status === 'open' ? 'success' : 'error'}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={4} style={{ textAlign: 'center' }}>
+                  No market data available.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </Container>
+    </>
+  );
+}
+
+export default MarketStatus;
