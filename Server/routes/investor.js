@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.get("/", fetchSymbolData);
 router.get("/marketnews", fetchMarketNews);
-router.get("/stocknews", fetchStockNews);
+router.get("/stocknews/:searchedSymbol", fetchStockNews);
 router.get("/marketstatus", fetchMarketStatus);
 router.get("/topgainers", fetchTopGainers);
 router.get("/dividends", fetchDividends);

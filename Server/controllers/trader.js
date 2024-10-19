@@ -1,5 +1,6 @@
 import { alpha } from '../index.js';
 import {finnhubClient} from '../index.js'; 
+import axios from 'axios';
 
 
 // SEARCH STOCK NAME SYMBOL
@@ -33,7 +34,7 @@ export const fetchInsiderTransactions = async (req, res) => {
 // Company Overview - Fundamental Data
 export const fetchCompanyOverview = async (req, res) => {
     try {
-        const {searchedSymbol} = req.body;
+        const {searchedSymbol} = req.params;
         const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${searchedSymbol}&apikey=${alpha}`;
         const response = await axios.get(url, {
             headers: {'User-Agent': 'request'}

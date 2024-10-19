@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.get("/all/symbol", fetchSymbolData);
 router.get("/insider", fetchInsiderTransactions);
-router.get("/overview", fetchCompanyOverview);
+router.get("/overview/:searchedSymbol", fetchCompanyOverview);
 
 export default router;

@@ -49,7 +49,7 @@ function App() {
       <Route path="/" element={<><Homepage /></>} />
 
 {/* Investor */}
-            <Route path="/company" element={<Company />} />
+            <Route path="/company/:symbol" element={<Company />} />
             <Route path="/portfolio-diversification-analysis" element={<Diversification/>} />
             <Route path="/dividend-tracking" element={<Dividend/>} />
             <Route path="/value-investing-metrics" element={<ValueInvesting/>} />

@@ -3,7 +3,7 @@ import { TextField, List, ListItem, ListItemText, Paper } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setSearchedWord } from "../state/index.js";
 
-const Search = ({ placeholder, style = {} }) => {
+const Search = ({ placeholder, style = {}, onSymbolSelect }) => {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [data, setData] = useState([]);
@@ -44,6 +44,7 @@ const Search = ({ placeholder, style = {} }) => {
   const mouseClick = (e) => {
     const searched = e.Symbol;
     dispatch(setSearchedWord(searched));
+    onSymbolSelect(searched);
   };
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const Search = ({ placeholder, style = {} }) => {
         const searched = selected.Symbol;
 
         dispatch(setSearchedWord(searched));
+        onSymbolSelect(searched);
 
         setQuery("");
       }

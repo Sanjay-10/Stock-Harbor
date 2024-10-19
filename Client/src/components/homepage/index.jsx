@@ -3,17 +3,16 @@ import { Box, colors, useTheme } from "@mui/material";
 import "../../index.css";
 import Search from "../../scenes/Search";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
     const theme = useTheme();
     const bg = theme.palette.background.main;
-
-    const searchedSymbol = useSelector((state) => state.symbol);
+    const navigate = useNavigate();
 
     return (
         <div className="main" style={{ background: bg }}>
             <Navbar />
-            <h1>{searchedSymbol? searchedSymbol : "NO"}</h1>
             <div style={{ padding: "50px", margin: "30px" }}>
                 <Box
                     sx={{ maxWidth: "650px", margin: "40px auto", textAlign: "center" }}
@@ -26,6 +25,7 @@ const HomePage = () => {
                     </h2>
 
                     <Search
+                    onSymbolSelect={(symbol) => navigate(`/company/${symbol}`)}
                         placeholder="Search for a company"
                         style={{ width: "100%", margin: "50px auto", backgroundColor: "white" }}
                     />

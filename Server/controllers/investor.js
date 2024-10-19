@@ -50,12 +50,15 @@ export const fetchMarketNews = async (req, res) => {
 
 // Specific Stock News and Sentiment
 export const fetchStockNews = async (req, res) => {
-    const {searchedSymbol} = req.body;
+    const {searchedSymbol} = req.params;
     const url = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchedSymbol}&apikey=${alpha}`;
     try {
         const response = await axios.get(url, {
             headers: {'User-Agent': 'request'}
         });
+
+        const news = response.data;
+        const latestNews = news.slice(0, 10);
         res.status(200).json(response.data);
     } catch (error) {
         res.status(404).json({message: error.message});
