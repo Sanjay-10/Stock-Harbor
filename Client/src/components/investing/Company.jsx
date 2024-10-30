@@ -29,7 +29,7 @@ const StockCompanyPage = () => {
         const response = await axios.get(
           `http://localhost:5001/overview/${symbol}`
         );
-        // setCompanyData(response.data);
+        console.log(response.data);
         setCompanyData(response.data);
         setLoading(false);
       } catch (error) {
@@ -74,9 +74,9 @@ const StockCompanyPage = () => {
       <Navbar />
       <Container sx={{ padding: "30px 0" }}>
       <Box>
-  <Grid container spacing={2} alignItems="center">
+  <Grid container mt={1} spacing={2} alignItems="center">
         {/* Price Section (narrower now) */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} mt={-10}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
           {companyData.Name}
@@ -89,7 +89,10 @@ const StockCompanyPage = () => {
       <Typography variant="h3" color="green">
           {"PRICE"} USD
         </Typography>
-        <Typography variant="h6">
+      <Typography variant="h5" color="green">
+          {"PERCENTAGE"} CHANGES
+        </Typography>
+        <Typography mt={2} variant="h6">
           {companyData.Exchange}: {companyData.Currency}
         </Typography>
       </Box>

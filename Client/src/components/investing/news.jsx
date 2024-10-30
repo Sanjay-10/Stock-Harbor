@@ -12,16 +12,17 @@ function News() {
   const fetchMarketNews = async () => {
     try {
       const response = await axios.get("http://localhost:5001/marketnews");
-      setNews(response.data);
+      console.log(response.data);
+      // setNews(response.data);
     } catch (error) {
       console.error('Error fetching market news:', error);
       setNews([]);
     }
   };
 
-  // useEffect(() => {
-  //   fetchMarketNews();
-  // }, []);
+  useEffect(() => {
+    fetchMarketNews();
+  }, []);
 
   return (
     <>
@@ -47,17 +48,17 @@ function News() {
                 component="img"
                 height="140"
                 image={newsItem.banner_image}
-                alt={newsItem.feed.title}
+                alt={newsItem.feed[0].title}
               />
               <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
-                  {newsItem.feed.title}
+                  {newsItem.feed[0].title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {newsItem.summary}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" mt={1}>
-                  Published: {new Date(newsItem.feed.time_published).toLocaleDateString("en-US", {
+                  Published: {new Date(newsItem.feed[0].time_published).toLocaleDateString("en-US", {
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',
@@ -65,7 +66,7 @@ function News() {
                 </Typography>
                 <Button
                   size="small"
-                  href={newsItem.feed.url}
+                  href={newsItem.feed[0].url}
                   target="_blank"
                   sx={{ mt: 1 }}
                 >

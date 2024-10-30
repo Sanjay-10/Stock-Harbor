@@ -23,18 +23,17 @@ app.use(cors());
 
 
 // FINNHUB API
-const news = process.env.NEWS_API_KEY;
+const news = process.env.FinHub_API_KEY;
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = news;
 export const finnhubClient = new finnhub.DefaultApi()
   
 // ALPHA VANTAGE API
-export const alpha = process.env.ALPHA_VANTAGE_API_KEY;
+export const alpha = process.env;
 
 // Routes
 app.use("/", investorRoutes);
 app.use("/", traderRoutes);
-
 
 // Connect to MongoDB
 const PORT = process.env.PORT || 5001;

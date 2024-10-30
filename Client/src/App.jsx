@@ -65,7 +65,7 @@ function App() {
             {/* Currently Implemented */}
             <Route path="/global-market-status" element={<MarketStatus/>} />
             <Route path="/top-gainers-losers" element={<TopGL/>} />
-            <Route path="/dividends" element={<Dividends/>} />
+            <Route path="/dividends/:symbol" element={<Dividends/>} />
             <Route path="/earnings" element={<Earnings/>} />
 
 {/* Trader */}
