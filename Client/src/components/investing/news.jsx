@@ -15,16 +15,20 @@ function News() {
       const response = await axios.get("http://localhost:5001/marketnews");
 
       if (response.status === 429 || response.data.message) {
-        // Handle rate limit error
+        // Handle rate limit or no news data
         setErrorMessage(response.data.message || "Rate limit reached. Please try again later.");
         setNews([]);
-      } else {
+      } else if (Array.isArray(response.data)) {
+        // Ensure `news` is an array
         setNews(response.data);
         setErrorMessage("");
+      } else {
+        setErrorMessage("Unexpected data format received.");
+        setNews([]);
       }
     } catch (error) {
       console.error('Error fetching market news:', error);
-      setErrorMessage("No news available");
+      setErrorMessage("Error fetching market news. Please try again later.");
       setNews([]);
     }
   };
@@ -53,12 +57,12 @@ function News() {
         ) : news.length === 0 ? (
           <Typography>No news available</Typography>
         ) : (
-          news.slice(0, 10).map((newsItem, index) => (
+          news.map((newsItem, index) => (
             <Card key={index} sx={{ mb: 2 }}>
               <CardMedia
                 component="img"
                 height="140"
-                image={newsItem.banner_image || "default-image-url.jpg"} // Provide default image if banner_image is missing
+                image={newsItem.banner_image || "default-image-url.jpg"}
                 alt={newsItem.title || "News Image"}
               />
               <CardContent>

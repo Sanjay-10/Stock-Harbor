@@ -29,8 +29,8 @@ const StockCompanyPage = () => {
         const response = await axios.get(
           `http://localhost:5001/overview/${symbol}`
         );
-        console.log(response.data);
-        setCompanyData(response.data);
+        console.log(response.data.feed);
+        setCompanyData(response.data.feed);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching company data:", error);
@@ -43,7 +43,8 @@ const StockCompanyPage = () => {
         const response = await axios.get(
           `http://localhost:5001/stocknews/${symbol}`
         );
-        setCompanyNews(response.data);
+        setCompanyNews(response.data.feed);
+        console.log("NEWSSS",response.data.feed);
       } catch (error) {
         console.error("Error fetching company news:", error);
       }

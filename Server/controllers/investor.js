@@ -38,26 +38,30 @@ export const fetchSymbolData = async (req, res) => {
 // Market News and Sentiment - GENERAL 
 export const fetchMarketNews = async (req, res) => {
     const url = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&apikey=${alpha}`;
+    
     try {
-        const response = await axios.get(url, {
-            headers: {'User-Agent': 'request'}
-        });
-        const news = response.data;
-
-        // Check if API has reached rate limit
-        if (news.Information) {
-            console.log("API rate limit reached:", news.Information);
-            return res.status(429).json({ message: news.Information });
-        }
-
-        // Proceed if no rate limit error
-        console.log("API response data:", news);
-        res.status(200).json(news);
+      const response = await axios.get(url, {
+        headers: { 'User-Agent': 'request' }
+      });
+      const news = response.data;
+  
+      // Check if the response is limited by API usage
+      if (news.Information && news.Information.includes('rate limit')) {
+        return res.status(429).json({ message: "API rate limit reached. Try again later." });
+      }
+  
+      // Ensure the response has a 'feed' key that is an array
+      if (!Array.isArray(news.feed)) {
+        return res.status(204).json({ message: "No news data available." });
+      }
+  
+      res.status(200).json(news.feed);
     } catch (error) {
-        console.log("fetchMarketNews error: ", error.message);
-        res.status(404).json({ message: error.message });
+      console.error("fetchMarketNews error:", error.message);
+      res.status(500).json({ message: "Error fetching market news." });
     }
-};
+  };
+  
 
 
 // Stock Price
@@ -89,8 +93,8 @@ export const fetchStockNews = async (req, res) => {
         });
 
         const news = response.data;
-        const latestNews = news.slice(0, 10);
-        res.status(200).json(latestNews);
+        console.log(news);
+        res.status(200).json(news);
     } catch (error) {
         console.log("fetchStockNews error: ");
         res.status(404).json({message: error.message});
