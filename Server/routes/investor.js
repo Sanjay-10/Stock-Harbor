@@ -14,12 +14,12 @@ import {
 const router = express.Router();
 
 router.get("/", fetchSymbolData);
-router.get("/:searchedSymbol", fetchStockPrice);
+router.get("/stock/:searchedSymbol", fetchStockPrice);
 router.get("/marketnews", fetchMarketNews);
 router.get("/stocknews/:searchedSymbol", fetchStockNews);
 router.get("/marketstatus", fetchMarketStatus);
 router.get("/topgainers", fetchTopGainers);
 router.get("/dividends/:searchedSymbol", fetchDividends);
-router.get("/earnings", fetchEarnings);
+router.get("/earnings/:searchedSymbol", fetchEarnings);
 
 export default router; 

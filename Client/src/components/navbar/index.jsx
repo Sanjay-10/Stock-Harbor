@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
   const { palette } = useTheme();
   const navigate = useNavigate();
-  const main = palette.primary.main;
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const [openMenu, setOpenMenu] = useState({ investor: false, trader: false });
 
@@ -32,7 +30,7 @@ function Navbar() {
     {name: "Market News", path: "/stock-news" },
   ];
   
-  const Investor = [
+  // const Investor = [
     // {name:"Companies Overview", path: "/companies-overview"},
     // { name: "Portfolio Diversification Analysis", path: "/portfolio-diversification-analysis" },
     // { name: "Dividend Tracking", path: "/dividend-tracking" },
@@ -45,11 +43,9 @@ function Navbar() {
     // { name: "Sector Rotation Analysis", path: "/sector-rotation-analysis" },
     // { name: "Tax Optimization", path: "/tax-optimization" },
     // { name: "Stock News", path: "/stock-news" },
+  // ];
 
-
-  ];
-
-  const Trader = [
+  // const Trader = [
     // { name: "Open Chain", path: "/option-chain" },
     // { name: "Open Interest (OI) Data", path: "/open-interest-data" },
     // { name: "VWAP Chart", path: "/vwap-chart" },
@@ -61,9 +57,7 @@ function Navbar() {
     // { name: "Heatmaps", path: "/heatmaps" },
     // { name: "Multi-Timeframe Analysis", path: "/multi-timeframe-analysis" },
     // { name: "Sentiment Analysis", path: "/sentiment-analysis" },
-
-
-  ];
+  // ];
 
   const handleNavigation = (path) => {
     console.log(path);
@@ -73,13 +67,11 @@ function Navbar() {
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', padding: '0 3rem' }}>
-        {/* Navbar start - Logo/Title */}
         <Typography onClick={()=>(navigate("/"))} variant="h4"  sx={{ color: "white", fontWeight:"bold", cursor:"pointer"}}>
           Stock-Harbor
         </Typography>
 
-        {/* Navbar center - Links for larger screens */}
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: '4rem', alignItems: 'center' }}>
+        <Box sx={{ display: { xs: "none", sm:"block",md: 'flex' }, gap: '4rem', alignItems: 'center' }}>
           {/* Tools Button */}
           <Button
             onClick={() => handleMenuOpen('investor')}
@@ -127,9 +119,6 @@ function Navbar() {
                   </MenuItem>
                 ))}
               </Box>
-
-              {/* Vertical Line */}
-                {/* <Divider orientation="vertical" flexItem sx={{ height: '15vh', alignSelf: 'center'}} /> */}
 
               {/* Right Column */}
               <Box sx={{ flex: 1, paddingLeft: '1rem' }}>
@@ -216,7 +205,7 @@ function Navbar() {
 
         {/* Navbar end - Profile or button */}
         <Box display="flex" alignItems="center">
-          <Button variant="contained" color="primary">Profile</Button>
+          <Button variant="contained" color="primary">About-Us</Button>
         </Box>
       </Toolbar>
     </AppBar>

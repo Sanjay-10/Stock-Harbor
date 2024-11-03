@@ -33,6 +33,7 @@ import Earnings from "./components/investing/Earnings";
 import InsiderTransactions from "./components/trading/InsiderTransactions";
 import CompaniesOverview from "./components/trading/CompaniesOverview";
 import Company from './components/investing/Company';
+import AboutUs from './components/about-us/index';
 
 
 function App() {
@@ -49,9 +50,11 @@ function App() {
       <Route path="/" element={<><Homepage /></>} />
 
 {/* Investor */}
+            <Route path="/About-Us" element={<AboutUs />} />
+
             <Route path="/company/:symbol" element={<Company />} />
             <Route path="/portfolio-diversification-analysis" element={<Diversification/>} />
-            <Route path="/dividend-tracking" element={<Dividend/>} />
+            <Route path="/dividends" element={<Dividends/>} />
             <Route path="/value-investing-metrics" element={<ValueInvesting/>} />
             <Route path="/stock-screener" element={<StockScreener/>} />
             <Route path="/long-term-performance-charts" element={<LongTermPerformance/>} />
@@ -67,6 +70,7 @@ function App() {
             <Route path="/top-gainers-losers" element={<TopGL/>} />
             <Route path="/dividends/:symbol" element={<Dividends/>} />
             <Route path="/earnings" element={<Earnings/>} />
+            <Route path="/earnings/:symbol" element={<Earnings/>} />
 
 {/* Trader */}
             <Route path="/option-chain" element={<OptionChain/>} />
@@ -83,6 +87,7 @@ function App() {
 
             {/* Currently Implemented */}
             <Route path="/insider-transactions" element={<InsiderTransactions/>} />
+            <Route path="/insider-transactions/:symbol" element={<InsiderTransactions/>} />
             <Route path="/companies-overview" element={<CompaniesOverview/>} />
             
       </Routes>

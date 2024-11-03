@@ -8,7 +8,7 @@ import {
 const router = express.Router();
 
 router.get("/all/symbol", fetchSymbolData);
-router.get("/insider", fetchInsiderTransactions);
+router.get("/insider-transactions", fetchInsiderTransactions);
 router.get("/overview/:searchedSymbol", fetchCompanyOverview);
 
 export default router; 

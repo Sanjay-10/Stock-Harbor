@@ -13,6 +13,7 @@ export const fetchSymbolData = async (req, res) => {
         });
         res.status(200).json(response.data);
     } catch (err){
+        console.log("fetchSymbolData error: ");
         res.status(404).json({message: err.message});   
     } 
 }
@@ -27,50 +28,9 @@ export const fetchInsiderTransactions = async (req, res) => {
         const response = await axios.get(url, {
             headers: {'User-Agent': 'request'}
         });
-        res.status(200).json({
-            "data": [
-              {
-                "transaction_date": "2024-09-30",
-                "ticker": "IBM",
-                "executive": "MIEBACH, MICHAEL",
-                "executive_title": "Director",
-                "security_type": "Promised Fee Share",
-                "acquisition_or_disposal": "A",
-                "shares": "396.0",
-                "share_price": "221.08"
-              },
-              {
-                "transaction_date": "2024-09-30",
-                "ticker": "IBM",
-                "executive": "FARR, DAVID N",
-                "executive_title": "Director",
-                "security_type": "Promised Fee Share",
-                "acquisition_or_disposal": "A",
-                "shares": "250.0",
-                "share_price": "221.08"
-              },
-              {
-                "transaction_date": "2024-09-30",
-                "ticker": "IBM",
-                "executive": "GORSKY, ALEX",
-                "executive_title": "Director",
-                "security_type": "Promised Fee Share",
-                "acquisition_or_disposal": "A",
-                "shares": "453.0",
-                "share_price": "221.08"
-              },
-              {
-                "transaction_date": "2024-09-30",
-                "ticker": "IBM",
-                "executive": "HOWARD, MICHELLE J",
-                "executive_title": "Director",
-                "security_type": "Promised Fee Share",
-                "acquisition_or_disposal": "A",
-                "shares": "357.0",
-                "share_price": "221.08"
-              },]});
+        res.status(200).json(response.data);
     } catch (error) {
-        console.log( res.status(404).json({message: error.message}));
+        console.log( "fetchInsiderTransactions error: ");
         
         res.status(404).json({message: error.message});
     }
@@ -86,6 +46,7 @@ export const fetchCompanyOverview = async (req, res) => {
         });
         res.status(200).json(response.data);
     } catch (error) {
+        console.log("fetchCompanyOverview error: ");    
         res.status(404).json({message: error.message});
     }
 }

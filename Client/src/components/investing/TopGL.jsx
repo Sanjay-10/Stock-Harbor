@@ -15,9 +15,13 @@ function TopGL() {
     setError('');
     try {
       const response = await axios.get('http://localhost:5001/topgainers'); // Adjust your endpoint here
-      setTopGainers(response.data.top_gainers);
-      setTopLosers(response.data.top_losers);
-      console.log(response.data);
+      if (response.data && Array.isArray(response.data.top_gainers) && Array.isArray(response.data.top_losers)) {
+        setTopGainers(response.data.top_gainers);
+        setTopLosers(response.data.top_losers);
+        console.log(response.data);
+      } else {
+        setError('No data found.');
+      }
     } catch (error) {
       setError('Error fetching data. Please try again later.');
       console.error('Error fetching data:', error);
@@ -69,17 +73,18 @@ function TopGL() {
             </TableHead>
             <TableBody>
               {(view === 'advance' ? topGainers : topLosers).map((item, index) => (
+                
                 <TableRow key={index}>
                   <TableCell>{item.ticker}</TableCell>
                   <TableCell>{item.price}</TableCell>
-                  <TableCell>{item.change_amount}</TableCell>
-                  <TableCell>{item.change_percentage}</TableCell>
+                  <TableCell sx={{color : item.change_amount > 0 ? "green" : "red"}}>{item.change_amount}</TableCell>
+                  <TableCell sx={{ color: parseFloat(item.change_percentage) > 0 ? "green" : "red" }}>{item.change_percentage}</TableCell>
                   <TableCell>{item.volume}</TableCell>
                 </TableRow>
               ))}
-              {(view === 'advance' ? topGainers : topLosers).length === 0 && !loading && (
+              {(view === 'advance' ? topGainers : topLosers).length === 0 && !loading && !error && (
                 <TableRow>
-                  <TableCell colSpan={5} align="center">No data available.</TableCell>
+                  <TableCell colSpan={5} align="center">No data found.</TableCell>
                 </TableRow>
               )}
             </TableBody>

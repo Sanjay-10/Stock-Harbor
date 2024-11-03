@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import Navbar from '../navbar';
 import Search from '../../scenes/Search';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from "axios";
 import {
   Container,
   Typography,
@@ -18,27 +18,31 @@ import {
 
 function Dividends() {
   const navigate = useNavigate();
-  const [dividends, setDividends] = useState({ symbol: "", data: [] });
   const { symbol } = useParams(); 
+  const [dividends, setDividends] = useState({ symbol: "", data: [] });
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchDividends = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5001/dividends/${symbol}`);
-        console.log("Full response data:", response.data);
 
-        if (Array.isArray(response.data)) {
-          setDividends({ symbol: response.data.symbol, data: response.data.data });
-        } else if (typeof response.data === 'object') {
-          setDividends({ symbol: response.data.symbol, data: response.data.data });
-        } else {
-          console.error("Unexpected data format:", response.data);
+  useEffect(() => {
+    // Fetch dividends data only if symbol is provided
+    const fetchDividends = async () => {
+      if (symbol) {
+        try {
+          const response = await axios.get(`http://localhost:5001/dividends/${symbol}`);
+          console.log("Full response data:", response.data);
+
+          // Handle the expected response structure
+          if (response.data && typeof response.data === 'object') {
+            setDividends({ symbol: response.data.symbol, data: response.data.data });
+          } else {
+            console.error("Unexpected data format:", response.data);
+          }
+        } catch (error) {
+          console.error('Error fetching dividends:', error);
+        } finally {
+          setLoading(false);
         }
-        
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
+      } else {
+        setLoading(false); // No symbol, just stop loading
       }
     };
 
@@ -50,7 +54,7 @@ function Dividends() {
       <Navbar /> 
       <Box sx={{ width: { xs: '90%', sm: '60%', md: '50%' }, mx: 'auto', mt: 2 }}>
         <Search
-          onSymbolSelect={(symbol) => navigate(`/dividends/${symbol}`)}
+          onSymbolSelect={(selectedSymbol) => navigate(`/dividends/${selectedSymbol}`)}
           placeholder="Search for a company"
           style={{ width: "100%", backgroundColor: "white" }}
         />
@@ -59,8 +63,12 @@ function Dividends() {
         <Typography variant="h6" align="center" color="text.secondary" mt={4}>
           Loading dividends...
         </Typography>
-      ) : (
+      ) : symbol ? (
         <DividendCard symbol={dividends.symbol} data={dividends.data} />
+      ) : (
+        <Typography variant="h6" align="center" mt={4}>
+          Please search for a company to view dividends.
+        </Typography>
       )}
     </>
   );
